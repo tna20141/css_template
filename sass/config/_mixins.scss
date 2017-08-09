@@ -1,0 +1,64 @@
+
+// responsive breakpoints
+// in accordance with bootstrap
+//
+// Sizes:
+//	- xs: portrait phone
+//	- sm: landspace phones
+//	- md: tablets
+//	- lg: desktops
+//	- xl: large desktops
+
+$__sm: 576px;
+$__md: 768px;
+$__lg: 992px;
+$__xl: 1200px;
+
+@mixin media-br-up($size) {
+	@if $size == xs {
+		@content;
+	} @else if $size == sm {
+		@media (min-width: $__sm) { @content; }
+	} @else if $size == md {
+		@media (min-width: $__md) { @content; }
+	} @else if $size == lg {
+		@media (min-width: $__lg) { @content; }
+	} @else if $size == xl {
+		@media (min-width: $__xl) { @content; }
+	}
+}
+
+@mixin media-br-down($size) {
+	@if $size == xs {
+		@media (max-width: $__sm - 1px) { @content; }
+	} @else if $size == sm {
+		@media (max-width: $__md - 1px) { @content; }
+	} @else if $size == md {
+		@media (max-width: $__lg - 1px) { @content; }
+	} @else if $size == lg {
+		@media (max-width: $__xl - 1px) { @content; }
+	} @else if $size == xl {
+		@content;
+	}
+}
+
+@mixin media-br-only($size) {
+	@if $size == xs {
+		@media (max-width: $__sm - 1px) { @content; }
+	} @else if $size == sm {
+		@media (min-width: $__sm) and (max-width: $__md - 1px) { @content; }
+	} @else if $size == md {
+		@media (min-width: $__md) and (max-width: $__lg - 1px) { @content; }
+	} @else if $size == lg {
+		@media (min-width: $__lg) and (max-width: $__xl - 1px) { @content; }
+	} @else if $size == xl {
+		@media (min-width: $__xl) { @content; }
+	}
+}
+
+@mixin media-br-between($size1, $size2) {
+	@include media-br-up($size1) {
+		@include media-br-down($size2) { @content; }
+	}
+}
+

@@ -1,0 +1,2 @@
+- Take a look at vendor libs, e.g. bootstrap.scss and responsive mixins.
+- Check import/cascading order.

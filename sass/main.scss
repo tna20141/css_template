@@ -3,13 +3,26 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "config/variables";
-@import "config/mixins";
-@import "config/components";
-
-@import "base";
-@import "layouts";
-@import "states";
-
 // needs sass-globbing, see https://github.com/chriseppstein/sass-globbing
+
+// import order is important
+
+// vendor-related
+@import "vendors/*";
+@import "vendors-extensions/*";
+
+// libs
+@import "helpers/variables";
+@import "helpers/mixins";
+@import "helpers/functions";
+@import "helpers/components";
+
+// base
+@import "base";
+
+// project-specific
 @import "modules/*";
+@import "layouts/*";
+@import "states/*";
+@import "pages/*";
+@import "themes/*";
